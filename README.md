@@ -163,7 +163,7 @@ This project is released under the **MIT License**. See [LICENSE](LICENSE) for d
 
 If you use this model in your research, please cite:
 
-> **Author(s)**, _Relationship dynamics and behavioral adaptations in the control of the 2022 mpox epidemic_, _Proc. Nat. Aca. Sci._, 2025.
+> **Hvid, Simonsen, Frisch, Sneppen**, _Relationship dynamics and behavioral adaptations in the control of the 2022 mpox epidemic_, _Proc. Nat. Aca. Sci._, 2025.
 
 And if you archive the code via Zenodo, cite the DOI:
 
