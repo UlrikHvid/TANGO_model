@@ -111,39 +111,44 @@ Core components include:
 
 ## Data and File Formats
 
-- ``: CSV of network edges. Each row has three values: `agent_i`, `agent_j`, and `strength`, representing a tie between those agents. Example: `network_N=4.0e+04_ub=300.csv`.
+- **`network_N=XXX_ub=YYY.csv`**: CSV of network edges. Each row has three values: `agent_i`, `agent_j`, and `strength`, representing a tie between those agents.  
+  - _Example_: `network_N=4.0e+04_ub=300.csv`
 
-- ``: Agent metadata table. Columns include:
+- **`member_data_N=XXX_ub=YYY.csv`**: Agent metadata table.  
+  - Columns:  
+    - `agent_id`  
+    - constant agent-specific rates: `rate_new_partners`, `rate_old_partners`  
+    - counts over the final simulated year: `num_partners`, `num_encounters`  
+  - _Example_: `member_data_N=4.0e+04_ub=300.csv`
 
-  - `agent_id`
-  - constant agent-specific rates: `r_new` (alpha), `r_old` (beta)
-  - counts over the final simulated year: `num_partners`, `num_encounters` Example: `member_data_N=4.0e+04_ub=300.csv`.
+- **`tot_log_N=XXX_ub=YYY.csv`**: Detailed partnership encounter log.  
+  - Columns:  
+    - `agent_id`  
+    - `partner_id`  
+    - `timestamp` (time of each encounter)  
+  - _Example_: `tot_log_N=4.0e+04_ub=300.csv`
 
-- ``: Detailed encounter log. Columns include:
-
-  - `agent_id`
-  - `partner_id`
-  - `timestamp` (time of each partnership encounter) Example: `tot_log_N=4.0e+04_ub=300.csv`.
-
-To load these in Python:
+To load these files in Python:
 
 ```python
 import pandas as pd
 
+# Load network edges
 edges = pd.read_csv(
     'Saved_networks/network_N=4.0e+04_ub=300.csv',
     header=None,
     names=['agent_i', 'agent_j', 'strength']
 )
 
+# Load agent metadata
 member_data = pd.read_csv(
     'Saved_networks/member_data_N=4.0e+04_ub=300.csv'
 )
 
+# Load encounter log
 encounters = pd.read_csv(
     'Saved_networks/tot_log_N=4.0e+04_ub=300.csv'
 )
-```
 
 ---
 
