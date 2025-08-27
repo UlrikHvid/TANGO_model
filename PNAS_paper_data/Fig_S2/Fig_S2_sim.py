@@ -1,8 +1,12 @@
 import sys
 import os
 # Directory setup
+#current_dir = os.path.dirname(os.path.abspath(__file__))
+#parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
+script_dir = os.path.dirname(os.path.abspath(__file__))
 current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
+parent_dir  = os.path.abspath(os.path.join(current_dir, '../..'))
+sys.path.append(parent_dir)
 data_dir = os.path.join(parent_dir, 'Saved_networks/')
 sys.path.append(parent_dir)
 
@@ -52,7 +56,7 @@ def append_run_results(
 N           = 170000
 M           = 28  #####!!!!!#####
 r_old_mean  = 0.2
-pexp        = 1.35
+pexp        = 1.55
 lb          = 0.15
 window      = 365
 old_dist    = "gamma"

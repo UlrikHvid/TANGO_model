@@ -9,14 +9,15 @@ from datetime import date, timedelta
 
 # Get the directory where the current script is located
 script_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(script_dir)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir  = os.path.abspath(os.path.join(current_dir, '../..'))
 sys.path.append(parent_dir)
 
 # Define the data directory relative to the script directory
 data_dir = os.path.join(parent_dir, "Saved_networks/")
 
-import MPox.tango_model as tango_model
-from MPox.tango_model import *
+import tango_model as tango_model
+from tango_model import *
 
 N = 170000
 M = 28
@@ -73,12 +74,8 @@ n_seed      = int(6 * N/85000) # Number of initial imported cases - SCALE WITH N
 
 spain_date  = date(2022, 5, 12)
 time_deltas = [0, 7, 14, 21, 28]
-# mitig1_date = date(2022, 6, 1)
-# mitig2_date = date(2022, 7, 1)
-# mitig3_date = date(2022, 8, 1)
 vac_date    = date(2022, 8, 8)
 dur_vac     = 35
-N_vac       = int(100 * N/85000) #Vaccinated (pr day if gradual vaccination) - SCALES WITH N
 N_vac       = 0
 strategy    = "random"
 threshold   = 20

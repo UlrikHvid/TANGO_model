@@ -4,18 +4,21 @@ import matplotlib.pyplot as plt
 import importlib
 import matplotlib.ticker as mticker  # <-- Added import
 # Get the directory where the current script is located
-script_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(script_dir)
+script_dir  = os.path.dirname(os.path.abspath(__file__))
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir  = os.path.abspath(os.path.join(current_dir, '../..'))
 sys.path.append(parent_dir)
 # Define the data directory relative to the script directory
 data_dir = os.path.join(parent_dir, "Saved_networks/")
 serial_interval_dir = os.path.join(parent_dir, "Data/2022_epidemic/")
+data_dir = os.path.join(parent_dir, 'Saved_networks/')
+sys.path.append(parent_dir)
 from scipy.optimize import curve_fit
 import numpy as np
 from scipy.special import expit
 
-import MPox.tango_model as tango_model
-from MPox.tango_model import *
+import tango_model as tango_model
+from tango_model import *
 import torch
 import pandas as pd
 from datetime import date
@@ -281,8 +284,8 @@ if not os.path.exists(params_file):
 ###############################################################
 
 # Simulation parameters
-Tmax        = 120   # max duration
-num_runs    = 47    # outer repetitions
+Tmax        = 120   # max duration (until mid september)
+num_runs    = 100    # outer repetitions with different time series for TI
 num_repeats = 20    # inner repetitions per parameter set
 
 for run in range(num_runs):
